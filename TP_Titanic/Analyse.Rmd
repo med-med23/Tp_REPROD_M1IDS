@@ -1,0 +1,79 @@
+---
+title: "Analyse.Rmd"
+output: html_document
+date: "2025-11-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Tp survival
+#presentation de donnees
+```{r}
+library(carData)
+df<-TitanicSurvival
+```
+
+```{r}
+head(df)
+
+```
+
+#Description
+```{r}
+colSums(is.na(df))
+```
+```{r}
+summary(df)
+```
+```{r}
+sd(df$age, na.rm = TRUE)
+```
+
+```{r}
+# Fréquences (Survived)
+table(df$Survived)
+prop.table(table(df$Survived)) * 100
+
+# Fréquences pour Pclass 
+table(df$Pclass)
+prop.table(table(df$Pclass)) * 100
+
+# Fréquences pour Sex 
+table(df$Sex)
+prop.table(table(df$Sex)) * 100
+```
+
+
+```{r}
+plot(df$survived~df$sex, col=c("orange","lightgreen"))
+plot(df$survived~df$passengerClass)
+```
+```{r}
+plot(df$age~df$survived)
+
+```
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
